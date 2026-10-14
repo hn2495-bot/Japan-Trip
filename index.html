@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japan Trip Picks</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout: garden photo fixed behind a frosted paper sheet; 1 column on phones, 2-column card grid on laptops */
+:root{
+  --sheet:rgba(255,255,255,.80); --card:rgba(255,255,255,.72); --fg:#1e2a21; --muted:#5b6a5e; --line:rgba(40,60,45,.14);
+  --accent:#3f5e3b; --accent-soft:rgba(63,94,59,.10); --on-accent:#f6f8f3; --ground:#2a3a2c;
+  --exp:#6e4f9e; --loc:#2f7a55; --food:#b0532a; --shop:#6f7f1c; --bar:#8f2d57;
+  --display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --sheet:rgba(16,22,18,.80); --card:rgba(30,38,32,.75); --fg:#e9eee6; --muted:#a6b3a7; --line:rgba(220,235,220,.13);
+  --accent:#b2d0a2; --accent-soft:rgba(178,208,162,.13); --on-accent:#14200f; --ground:#0f1611;
+  --exp:#c5a6ee; --loc:#86d3ac; --food:#f2a881; --shop:#c9dc82; --bar:#f293bd; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sheet:rgba(16,22,18,.80); --card:rgba(30,38,32,.75); --fg:#e9eee6; --muted:#a6b3a7; --line:rgba(220,235,220,.13);
+  --accent:#b2d0a2; --accent-soft:rgba(178,208,162,.13); --on-accent:#14200f; --ground:#0f1611;
+  --exp:#c5a6ee; --loc:#86d3ac; --food:#f2a881; --shop:#c9dc82; --bar:#f293bd; color-scheme:dark}
+body{background:var(--ground);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.6}
+.photo{position:fixed;inset:0;z-index:-1;background:var(--ground) url(bg.jpg) center 30%/cover no-repeat}
+.wrap{padding-block:clamp(14px,4vw,48px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sheet{max-width:1080px;margin:0 auto;background:var(--sheet);
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);
+  border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.25);
+  padding:clamp(20px,4.5vw,52px) clamp(16px,4.5vw,56px);display:flex;flex-direction:column;gap:clamp(18px,2.4vw,28px)}
+header{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:500 .75rem var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+header h1{font:700 clamp(2rem,5vw,3.1rem)/1.1 var(--display);margin:0;text-wrap:balance;letter-spacing:.01em}
+header p{margin:0;color:var(--muted);max-width:60ch}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:var(--accent-soft);max-width:560px}
+.tab{background:none;border:0;border-radius:10px;padding:9px 6px;cursor:pointer;color:var(--muted);
+  font:500 1rem var(--body);display:flex;flex-direction:column;align-items:center;line-height:1.25}
+.tab small{font:500 .78rem var(--display);letter-spacing:.1em}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.tab:not([aria-selected="true"]):hover{color:var(--fg)}
+.tab:focus-visible,.chip:focus-visible,a.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;
+  padding:6px 14px;font:500 .88rem var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--sheet)}
+.chip .n{opacity:.6;margin-left:5px;font-variant-numeric:tabular-nums}
+main{display:flex;flex-direction:column;gap:clamp(22px,3vw,34px)}
+.group{display:flex;flex-direction:column;gap:12px}
+.group h2{display:flex;align-items:center;gap:10px;margin:0;font:700 1.25rem var(--display);letter-spacing:.02em}
+.group h2::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.group h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.cards{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  display:flex;flex-direction:column;gap:12px;min-width:0}
+.item .txt{min-width:0;display:flex;flex-direction:column;gap:6px}
+.item h3{margin:0;font:700 1.08rem/1.35 var(--body)}
+.item .area{display:block;color:var(--muted);font:400 .82rem var(--body);letter-spacing:.03em}
+.item p{margin:0;font-size:.92rem}
+.links{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+a.btn{text-decoration:none;font:500 .85rem var(--body);padding:8px 14px;border-radius:999px;white-space:nowrap;
+  border:1px solid var(--line);color:var(--fg);text-align:center}
+a.btn.map{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+a.btn:hover{border-color:var(--accent)}
+@media (max-width:520px){.links a.btn{flex:1}}
+.egg{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline;font-size:.83rem;color:var(--muted)}
+.egg span{font:700 .68rem var(--body);letter-spacing:.05em;padding:1px 8px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.egg.ok span{color:var(--loc)} .egg.ask span{color:var(--food)}
+.pick{display:inline-block;vertical-align:2px;margin-left:6px;font:700 .66rem var(--body);letter-spacing:.06em;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.exp{--c:var(--exp)} .loc{--c:var(--loc)} .food{--c:var(--food)} .shop{--c:var(--shop)} .bar{--c:var(--bar)}
+footer{color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding-top:16px;max-width:80ch}
+</style>
+</head>
+<body>
+<div class="photo" aria-hidden="true"></div>
+<div class="wrap"><div class="sheet">
+  <header>
+    <span class="eyebrow">Tokyo · Kyoto · Osaka</span>
+    <h1>Japan Trip Picks</h1>
+    <p>Places to eat, see, and do, picked for a trip for two. Each entry links to its website and Google Maps.</p>
+  </header>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <div class="chips" id="chips"></div>
+  <main id="list"></main>
+  <footer>Mid-October to November is autumn-foliage season, so Kyoto temples get busy. Go early in the morning. Popular restaurants often need a reservation; check hours before going.<br><br>Egg labels are a general guide, not a guarantee. Recipes vary and shared fryers or grills are common, so show the allergy card and confirm with staff every time: 「卵アレルギーがあります。卵を含む料理は食べられません。」 (I have an egg allergy and cannot eat dishes that contain egg.)</footer>
+</div></div>
+
+<script>
+const G = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+const DATA = {
+ tokyo:{label:"Tokyo",jp:"東京",items:[
+  ["exp","teamLab Planets","Toyosu","Walk-through digital art museum, partly barefoot in water. Book a time slot online.","https://www.teamlab.art/e/planets/","teamLab Planets TOKYO"],
+  ["exp","Tsukiji Outer Market","Tsukiji","Morning street-food walk: tamagoyaki, fresh sushi, grilled seafood. Go before 10am.","https://www.tsukiji.or.jp/english/","Tsukiji Outer Market"],
+  ["exp","Shibuya Sky","Shibuya","Open-air rooftop deck above Shibuya Crossing. Sunset slot is the best view.","https://www.shibuya-scramble-square.com/sky/","Shibuya Sky"],
+  ["exp","Omoide Yokocho","Shinjuku","Narrow alley of tiny yakitori bars by Shinjuku Station. Great for an evening drink.","","Omoide Yokocho Shinjuku"],
+  ["loc","Senso-ji","Asakusa","Tokyo's oldest temple, with the Nakamise shopping street leading up to it.","https://www.senso-ji.jp/english/","Senso-ji Temple"],
+  ["loc","Meiji Jingu","Harajuku","Large forested Shinto shrine. Pair it with Omotesando for shopping.","https://www.meijijingu.or.jp/en/","Meiji Jingu"],
+  ["loc","Shinjuku Gyoen","Shinjuku","Big landscaped garden mixing Japanese, French, and English styles. Calm break from the city.","https://www.env.go.jp/garden/shinjukugyoen/english/","Shinjuku Gyoen National Garden"],
+  ["loc","Shibuya Crossing","Shibuya","The famous scramble crossing. Best watched from above, then walked through.","","Shibuya Crossing"],
+  ["food","Kyubey","Ginza","Long-running, high-end Edomae sushi counter. Reserve ahead.","https://www.kyubey.jp/","Kyubey Ginza"],
+  ["food","Gonpachi Nishi-Azabu","Nishi-Azabu","Big, lively izakaya with soba and yakitori. Easy pick for a group dinner.","https://gonpachi.jp/","Gonpachi Nishi-Azabu"],
+  ["food","AFURI","Ebisu","Light yuzu-shio ramen. Order from a ticket machine, quick meal.","https://afuri.com/","AFURI Ebisu"],
+  ["food","Tonki","Meguro","Classic tonkatsu counter, open since 1939. Expect a short line.","","Tonki Meguro"],
+  ["food","Tsubame Grill","Kinshicho and other branches","Western-style Japanese diner since 1930. Must-order: the Tsubame-style Hamburg Steak, baked in foil with beef stew sauce. Several branches across Tokyo.","https://www.ryoko-traveler.com/tsubame-grill-kinshicho/","Tsubame Grill Kinshicho",1],
+  ["shop","Toraya Akasaka (Store & Café)","Akasaka","Flagship of Toraya, a wagashi maker of about 500 years, famous for yokan. Sit in the café for seasonal sweets and matcha, then pick up yokan as a gift.","https://global.toraya-group.co.jp/blogs/store-and-cafe/akasaka-store","Toraya Akasaka",1],
+  ["food","Nodoguro Nakamata","Ginza","Specialist in nodoguro (blackthroat seaperch), a rich, prized fish, served grilled and over rice. A memorable dinner.","https://tabelog.com/en/tokyo/A1301/A130101/13186922/","Nodoguro Nakamata Ginza",1],
+  ["shop","Umezono","Asakusa","Traditional sweets house open since 1854, a short walk from Senso-ji. Famous for awa-zenzai: warm millet mochi under sweet red bean paste.","https://www.asakusa-umezono.co.jp/","Umezono Asakusa",1],
+  ["bar","Lounge Bar Privé (Palace Hotel)","Marunouchi","Elegant hotel bar facing the Imperial Palace moat. Refined cocktails and Japanese whisky in a calm setting.","https://en.palacehoteltokyo.com/restaurant/lounge-bar-prive/","Lounge Bar Privé Palace Hotel Tokyo",1],
+  ["bar","Old Imperial Bar (Imperial Hotel)","Hibiya","Classic bar keeping original design details from Frank Lloyd Wright's Imperial Hotel building. Try the signature Mount Fuji cocktail.","https://www.imperialhotel.co.jp/en/tokyo/restaurant/old-imperialbar","Old Imperial Bar Imperial Hotel Tokyo",1]
+ ]},
+ kyoto:{label:"Kyoto",jp:"京都",items:[
+  ["exp","Tea ceremony at Camellia","Higashiyama","Small-group tea ceremony with English explanation, near Kiyomizu-dera. Easy to book for two.","https://www.tea-kyoto.com/","Camellia Tea Ceremony Kyoto",1],
+  ["exp","My Only Fragrance Kiyomizu","Higashiyama","Blend your own custom fragrance. A nice keepsake to make together as a couple.","https://www.tripadvisor.com/Attraction_Review-g298564-d25319860-Reviews-MY_ONLY_FRAGRANCE-Kyoto_Kyoto_Prefecture_Kinki.html","My Only Fragrance Kiyomizu",1],
+  ["exp","Nishiki Market","Downtown","Covered food market, about 400m long. Snack your way through Kyoto specialties.","https://www.kyoto-nishiki.or.jp/","Nishiki Market Kyoto"],
+  ["exp","Evening walk in Gion","Gion","Lantern-lit streets of Hanamikoji and Shirakawa. Quiet and photogenic after dark.","","Gion Shirakawa Kyoto"],
+  ["loc","Fushimi Inari Taisha","Fushimi","Thousands of red torii gates up the mountain. Go at 7–8am to avoid crowds.","https://inari.jp/en/","Fushimi Inari Taisha",1],
+  ["loc","Daitoku-ji","Kita","Large Zen temple complex with quiet sub-temples and rock gardens. Far calmer than the famous sights.","https://www.japan.travel/en/spot/1156/","Daitoku-ji",1],
+  ["loc","Kiyomizu-dera","Higashiyama","Wooden hillside temple with a city view. Walk down through Ninenzaka and Sannenzaka.","https://www.kiyomizudera.or.jp/en/","Kiyomizu-dera"],
+  ["loc","Kinkaku-ji","Kita","The Golden Pavilion, reflected in its pond.","https://www.shokoku-ji.jp/en/kinkakuji/","Kinkaku-ji",1],
+  ["loc","Arashiyama Bamboo Grove","Arashiyama","Bamboo path plus Tenryu-ji temple and the Togetsukyo bridge. A half-day trip.","","Arashiyama Bamboo Grove",1],
+  ["loc","Philosopher's Path","Sakyo","Canal-side walk between Ginkaku-ji and Nanzen-ji. Strong autumn colors.","","Philosopher's Path Kyoto"],
+  ["food","Hyotei","Nanzen-ji","Centuries-old kaiseki restaurant. Formal, special-occasion meal. Reserve well ahead.","https://hyotei.co.jp/en/","Hyotei Kyoto",1],
+  ["shop","Marukyu Koyamaen Motoan","Nijo","Tea house of a long-established Uji matcha maker. Matcha and seasonal sweets in a traditional townhouse.","https://www.marukyu-koyamaen.co.jp/english/motoan.html","Marukyu Koyamaen Motoan",1],
+  ["shop","Gion Ryokujuan Shimizu","Gion","Specialty konpeito (traditional sugar candy) shop. Beautiful boxes, good as gifts.","https://tabelog.com/en/kyoto/A2601/A260301/26032771/","Gion Ryokujuan Shimizu",1],
+  ["food","Honke Owariya","Downtown","Soba shop with over 500 years of history. Try the hourai soba set.","https://honke-owariya.co.jp/en/","Honke Owariya"],
+  ["food","Okutan Kiyomizu","Higashiyama","Simple yudofu (hot tofu) set meal in a garden setting near Kiyomizu-dera.","","Okutan Kiyomizu",1]
+ ]},
+ osaka:{label:"Osaka",jp:"大阪",items:[
+  ["exp","Dotonbori food crawl","Namba","Neon canal street. Takoyaki, okonomiyaki, kushikatsu, all in a few blocks.","","Dotonbori Osaka"],
+  ["exp","Kuromon Market","Nipponbashi","Seafood and wagyu skewers, grilled on the spot. Best in the late morning.","https://kuromon.com/en/","Kuromon Market"],
+  ["exp","Umeda Sky Building","Umeda","Open-air Floating Garden observatory linking two towers. Good at night.","https://www.skybldg.co.jp/en/","Umeda Sky Building"],
+  ["exp","Universal Studios Japan","Bay Area","Full-day theme park. Buy tickets and Express Passes online in advance.","https://www.usj.co.jp/web/en/us","Universal Studios Japan"],
+  ["loc","Osaka Castle","Chuo","Main keep, moats, and a large park around it. A boat ride on the moat is an option.","https://www.osakacastle.net/english/","Osaka Castle"],
+  ["loc","Shinsekai & Tsutenkaku","Naniwa","Retro neighborhood under the Tsutenkaku tower. The home of kushikatsu.","https://www.tsutenkaku.co.jp/en/","Tsutenkaku Tower"],
+  ["loc","Nakanoshima","Kita","River island with museums, a rose garden, and old brick buildings.","","Nakanoshima Park Osaka"],
+  ["food","Kushikatsu Daruma","Shinsekai","The classic kushikatsu chain. No double-dipping in the sauce.","https://www.kushikatu-daruma.com/","Kushikatsu Daruma Shinsekai"],
+  ["food","Mizuno","Dotonbori","Okonomiyaki spot open since 1945. The yamaimo-yaki is the signature.","","Mizuno okonomiyaki Dotonbori"],
+  ["food","Kani Doraku","Dotonbori","Crab course meals, under the giant moving crab sign.","https://douraku.co.jp/","Kani Doraku Dotonbori Honten"],
+  ["food","Takoyaki Wanaka","Namba","Popular takoyaki stand near Namba. Quick snack.","","Takoyaki Wanaka Sennichimae"],
+  ["shop","551 Horai","Namba","Osaka's beloved butaman (steamed pork buns), made fresh in front of you. Main store in Namba; branches at Shin-Osaka and Kansai Airport too. Eat same day or keep chilled.","https://www.551horai.co.jp/","551 Horai Honten Namba"]
+ ]}
+};
+const EGG={
+ "Tsukiji Outer Market":["ask","Tamagoyaki (egg omelet) stalls are everywhere. Grilled seafood and sushi are fine."],
+ "Omoide Yokocho":["ask","Skip tsukune (meatballs often bound with egg). Plain skewers are fine."],
+ "Kyubey":["ok","Skip the tamago nigiri and mention the allergy when booking."],
+ "Gonpachi Nishi-Azabu":["ask","Tempura batter and tsukune may contain egg. Plain soba and grilled skewers are safer."],
+ "AFURI":["ask","Noodles and the seasoned egg topping may contain egg. Ask staff."],
+ "Tonki":["ask","Tonkatsu breading usually uses an egg wash."],
+ "Tsubame Grill":["ask","Hamburg steak is usually bound with egg. Ask about the beef stew or other dishes."],
+ "Toraya Akasaka (Store & Café)":["ok","Yokan contains no egg. Check café items one by one."],
+ "Lounge Bar Privé (Palace Hotel)":["ok","Most drinks are fine. Sours and fizzes can use egg white; ask the bartender."],
+ "Old Imperial Bar (Imperial Hotel)":["ask","The Mount Fuji cocktail is made with egg white. Order a different signature drink."],
+ "Umezono":["ok","Awa-zenzai and anmitsu are usually egg-free. Dorayaki and some takeaway cakes contain egg."],
+ "Nodoguro Nakamata":["ask","Mostly fish and rice, but courses can include egg dishes. Mention the allergy when booking."],
+ "Tea ceremony at Camellia":["ok","Most wagashi have no egg, but ask about the sweet served."],
+ "Nishiki Market":["ask","Dashimaki (rolled egg) shops are common. Pickles, tofu, and grilled seafood are fine."],
+ "Hyotei":["ask","The signature Hyotei egg is part of the meal. Tell them when booking so they can substitute."],
+ "Marukyu Koyamaen Motoan":["ok","Matcha is fine. Ask about the sweets."],
+ "Gion Ryokujuan Shimizu":["ok","Konpeito is pure sugar candy, no egg."],
+ "Honke Owariya":["ask","The hourai soba set includes egg. Plain soba is safer; confirm the noodles."],
+ "Okutan Kiyomizu":["ok","Tofu, kombu, and vegetables. Still mention the allergy."],
+ "Dotonbori food crawl":["ask","Takoyaki, okonomiyaki, and kushikatsu batters usually contain egg."],
+ "Kuromon Market":["ok","Grilled seafood and wagyu skewers are good picks. Avoid egg rolls."],
+ "Kushikatsu Daruma":["ask","Batter usually contains egg."],
+ "Mizuno":["ask","Okonomiyaki batter usually contains egg."],
+ "Kani Doraku":["ask","Crab itself is fine, but courses can include chawanmushi (egg custard). Tell staff."],
+ "Takoyaki Wanaka":["ask","Takoyaki batter usually contains egg."],
+ "551 Horai":["ask","Check ingredients at the counter before buying."]
+};
+const CATS=[["all","All"],["exp","Experience"],["loc","Location"],["food","Restaurant"],["shop","Sweets & Gifts"],["bar","Bar"]];
+const ORDER=["exp","loc","food","shop","bar"], NAME={exp:"Experience",loc:"Location",food:"Restaurant",shop:"Sweets & Gifts",bar:"Bar"};
+let city="tokyo", cat="all";
+try{const h=location.hash.slice(1); if(DATA[h]) city=h; else {const s=localStorage.getItem("jp-city"); if(DATA[s]) city=s;}}catch(e){}
+
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function render(){
+  document.getElementById("tabs").innerHTML=Object.entries(DATA).map(([k,v])=>
+    `<button class="tab" role="tab" id="tab-${k}" aria-selected="${k===city}" data-c="${k}">${v.label}<small>${v.jp}</small></button>`).join("");
+  const items=DATA[city].items;
+  document.getElementById("chips").innerHTML=CATS.map(([k,l])=>{
+    const n=k==="all"?items.length:items.filter(i=>i[0]===k).length;
+    return `<button class="chip" id="chip-${k}" aria-pressed="${k===cat}" data-k="${k}">${l}<span class="n">${n}</span></button>`}).join("");
+  const present=CATS.filter(([k])=>k==="all"||items.some(i=>i[0]===k)); if(!present.some(([k])=>k===cat)) cat="all";
+  document.getElementById("chips").innerHTML=present.map(([k,l])=>{const n=k==="all"?items.length:items.filter(i=>i[0]===k).length;return `<button class="chip" id="chip-${k}" aria-pressed="${k===cat}" data-k="${k}">${l}<span class="n">${n}</span></button>`}).join("");
+  document.getElementById("list").innerHTML=ORDER.filter(k=>(cat==="all"||cat===k)&&items.some(i=>i[0]===k)).map(k=>{
+    const rows=items.filter(i=>i[0]===k).sort((a,b)=>(b[6]||0)-(a[6]||0)).map(([c,name,area,note,web,q,pick])=>`
+      <article class="item ${c}"><div class="txt"><h3>${esc(name)}${pick?'<span class="pick">Hanae’s pick</span>':''}<span class="area">${esc(area)}</span></h3><p>${esc(note)}</p>${EGG[name]?`<p class="egg ${EGG[name][0]}"><span>${EGG[name][0]==="ok"?"Egg-free friendly":"Contains egg – ask"}</span>${esc(EGG[name][1])}</p>`:""}</div>
+      <div class="links">${web?`<a class="btn" href="${web}" target="_blank" rel="noopener">Website ↗</a>`:""}
+      <a class="btn map" href="${G(q+", "+DATA[city].label)}" target="_blank" rel="noopener">Google Maps ↗</a></div></article>`).join("");
+    return `<section class="group ${k}"><h2>${NAME[k]}</h2><div class="cards">${rows}</div></section>`}).join("");
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest(".tab"), c=e.target.closest(".chip");
+  if(t){city=t.dataset.c; try{localStorage.setItem("jp-city",city)}catch(_){} render();}
+  if(c){cat=c.dataset.k; render();}
+});
+render();
+</script>
+
+</body>
+</html>
